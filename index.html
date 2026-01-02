@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Vector Art Generator: Create Logos & Illustrations</title>
+    <meta name="description" content="Unleash your creativity with our AI vector art generator. Describe any image or icon, and watch our AI create stunning, scalable SVG graphics in seconds.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <span>Vector<span class="text-accent">Art</span>.AI</span>
+            </a>
+            
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#how-to-use">How it Works</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#faqs">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#playground" class="btn btn-primary">Generate Vector Art</a>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="#how-to-use" class="mobile-link">How it Works</a>
+            <a href="#gallery" class="mobile-link">Gallery</a>
+            <a href="#features" class="mobile-link">Features</a>
+            <a href="#faqs" class="mobile-link">FAQ</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg-grid"></div>
+            <div class="hero-animation">
+                <div class="shape shape-triangle"></div>
+                <div class="shape shape-circle"></div>
+                <div class="shape shape-square"></div>
+                <div class="shape shape-cross"></div>
+            </div>
+            
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge">AI-Powered Vector Engine</div>
+                    <h1>Transform Photos into Stunning <span class="highlight">Vector Art</span></h1>
+                    <p>Transform photos into stunning vector art illustrations with clean outlines and flat colors using AI. Perfect for logos, merchandise, and digital design.</p>
+                    <div class="hero-btns">
+                        <a href="#playground" class="btn btn-primary btn-lg">Try It Now</a>
+                        <a href="#gallery" class="btn btn-outline btn-lg">View Gallery</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">Vectors Created</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">SVG</span>
+                            <span class="stat-label">Export Format</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-img-frame">
+                        <img src="images/hero-bg.jpg" alt="Digital design workspace with vector shapes" class="hero-img">
+                        <div class="anchor-point ap-tl"></div>
+                        <div class="anchor-point ap-tr"></div>
+                        <div class="anchor-point ap-bl"></div>
+                        <div class="anchor-point ap-br"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playground / Tool Section -->
+        <section id="playground" class="playground-section">
+            <div class="container">
+                <div class="section-header center">
+                    <h2>AI Vector Art Generator</h2>
+                    <p>Experience the future of design. Generate unique AI vector art perfect for any project.</p>
+                </div>
+
+                <div class="tool-interface">
+                    <!-- Sidebar Controls -->
+                    <div class="tool-sidebar">
+                        <div class="control-group">
+                            <label>Upload Image</label>
+                            <div class="upload-zone" id="upload-zone">
+                                <input type="file" id="file-input" accept="image/*" hidden>
+                                <div class="upload-content">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    <p>Drop file or click to upload</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="style-select">Vector Style</label>
+                            <select id="style-select" class="brutalist-select">
+                                <option value="flat">Flat Illustration</option>
+                                <option value="logo">Minimal Logo</option>
+                                <option value="popart">Pop Art</option>
+                                <option value="blueprint">Blueprint Technical</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Complexity</label>
+                            <input type="range" min="1" max="10" value="5" class="brutalist-range">
+                        </div>
+
+                        <button id="generate-btn" class="btn btn-accent btn-block" disabled>Generate Vector Art</button>
+                    </div>
+
+                    <!-- Preview Area -->
+                    <div class="tool-preview">
+                        <div class="preview-canvas">
+                            <div id="preview-placeholder" class="placeholder-text">
+                                <div class="grid-overlay"></div>
+                                <span>Preview Area</span>
+                            </div>
+                            <img id="preview-image" alt="Original Upload" style="display: none;">
+                            <div id="loading-overlay" class="loading-overlay" style="display: none;">
+                                <div class="scanner-bar"></div>
+                                <p>Vectorizing...</p>
+                            </div>
+                            <div id="result-container" style="display: none;">
+                                <img id="result-image" alt="Generated Vector Art">
+                                <div class="result-actions">
+                                    <button id="download-btn" class="btn btn-primary btn-sm">Download SVG</button>
+                                    <button id="reset-btn" class="btn btn-outline btn-sm">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-to-use" class="how-to-section">
+            <div class="container">
+                <div class="section-header center">
+                    <h2>How AI Vector Art Works?</h2>
+                </div>
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <h3>Upload Photo</h3>
+                        <p>Select & Upload photos from your device to apply AI Vector Art, and make sure uploaded photos must be in high quality with a well-lit background.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <h3>Generate Image</h3>
+                        <p>Choose the vector art style you want, then click the “Generate Vector Art” button. The AI will instantly analyze your photo and recreate it.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <h3>Download and Edit</h3>
+                        <p>Export the final artwork as an SVG or other vector format for unlimited scaling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section id="features" class="benefits-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why You’ll Love Our AI Vector Art</h2>
+                    <p>Discover the key benefits that make our AI tool the perfect choice for generating stunning vector art from your photos effortlessly.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="card-icon bg-blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                        </div>
+                        <h3>User-Friendly Interface</h3>
+                        <p>Our simple, intuitive design makes the AI Vector Art tool easy for everyone to use, even without any technical experience.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="card-icon bg-rose">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <h3>High-Quality Outputs</h3>
+                        <p>Enjoy professional-grade results with exceptional clarity, detail, and color accuracy in every AI-generated vector art piece.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="card-icon bg-yellow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </div>
+                        <h3>Free Download & Share</h3>
+                        <p>Instantly download and share your AI-generated creations at no cost, without the need for sign-ups or extra steps.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="card-icon bg-green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <h3>Instant Results</h3>
+                        <p>Upload your photo and get AI Vector Art style visuals within seconds. No editing or design skills are needed—the AI handles everything.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <div class="section-header center">
+                    <h2>Made with VectorArt.AI</h2>
+                    <p>Check out what our users are creating.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/gallery-result-1.jpg" alt="Vector art portrait pop art style">
+                        <div class="gallery-overlay"><span>Portrait</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery-result-2.jpg" alt="Vector mountain landscape geometric">
+                        <div class="gallery-overlay"><span>Landscape</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery-result-3.jpg" alt="Vector vintage camera flat icon">
+                        <div class="gallery-overlay"><span>Icon</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/gallery-result-4.jpg" alt="Stylized vector french bulldog">
+                        <div class="gallery-overlay"><span>Illustration</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <div class="section-header center text-white">
+                    <h2>What People Say about us</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="quote-content">
+                            "This AI is a game-changer for my projects. The vector outputs are clean and incredibly easy to edit."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-1.jpg" alt="Olivia">
+                            <div>
+                                <h4>Olivia</h4>
+                                <span>Digital Artist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote-content">
+                            "I'm not a designer, but Max Studio makes it so easy to get cool graphics for my blog. It's super fast and intuitive."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-2.jpg" alt="Elijah">
+                            <div>
+                                <h4>Elijah</h4>
+                                <span>Web user from USA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote-content">
+                            "Generating vector assets used to take hours. Now I can create dozens of options in just a few minutes, which is amazing for my workflow."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-3.jpg" alt="Stella">
+                            <div>
+                                <h4>Stella</h4>
+                                <span>Motion Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faqs" class="faq-section">
+            <div class="container">
+                <div class="section-header center">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-wrapper">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How long does it take to apply the AI Vector Art effect?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The processing time depends on the complexity and size of your uploaded image. However, our AI algorithms are highly optimized for speed, ensuring you receive your transformed image much faster than with competing tools. Most conversions are completed within seconds.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Is this AI Vector Art tool free to use?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, it is! When you sign up for a free account on our website, we provide you with complimentary credits. You can use these credits to try the AI Vector Art effect and explore other creative tools we offer.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Are my uploaded photos safe and private?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutely. We take your privacy very seriously. Your images are uploaded over a secure connection, used only for the purpose of generating your AI artwork, and are not shared with any third parties. They are automatically deleted from our servers after a short period.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What kind of photos work best for this effect?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>For the best results, we recommend using clear, well-lit photos with a distinct subject. Portraits, pet photos, landscapes, and product images tend to work exceptionally well. High-contrast images often produce a more dramatic and defined vector look.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta-section">
+            <div class="cta-pattern"></div>
+            <div class="container center">
+                <h2>Ready to Create?</h2>
+                <p>Start converting your photos into vector masterpieces today.</p>
+                <a href="#playground" class="btn btn-white btn-lg">Generate Vector Art Now</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">Vector<span class="text-accent">Art</span>.AI</span>
+                <p class="footer-tagline">Create Logos & Illustrations with AI</p>
+            </div>
+            <div class="footer-links">
+                <a href="#" data-modal="privacy">Privacy Policy</a>
+                <a href="#" data-modal="terms">Terms of Service</a>
+                <a href="mailto:contact@vectorart.ai">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2024 VectorArt.AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>At VectorArt.AI, we value your privacy. We process images securely and delete them after generation. We do not sell your data.</p>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Terms of Service</h2>
+            <p>By using VectorArt.AI, you agree to our terms. Generated images are royalty-free for personal and commercial use.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
